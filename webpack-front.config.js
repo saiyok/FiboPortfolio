@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -36,11 +37,17 @@ module.exports = {
     },
     devServer:{
         host: '0.0.0.0',
-        publicPath: '/asset/',
+        publicPath: '/',
         contentBase: path.resolve(__dirname, "./public"),
         watchContentBase: true,
         compress: true,
-        port: 3001
+        port: 3000
     },
+    plugins:[
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, "./public/index.html"),
+        }),
+    ],
     devtool: 'inline-source-map'
 };

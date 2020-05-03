@@ -7,7 +7,7 @@ module.exports = {
         app:["./src/server/server.js"]
     },
     output:{
-        path: path.resolve(__dirname, "./public/assets"),
+        path: path.resolve(__dirname, "./public/"),
         filename: "back-dist.js"
     },
 

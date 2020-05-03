@@ -6,22 +6,26 @@
   "scripts": {
     "build-front": "webpack --mode=development --config ./webpack-front.config.js",
     "build-back": "webpack --mode=development --config ./webpack-back.config.js",
-    "start-back": "nodemon ./public/assets/back-dist.js",
-    "start-front": "webpack-dev-server --config ./webpack-front.config.js"
+    "start-back-dev": "nodemon ./src/server/server.js",
+    "start-front-dev": "webpack-dev-server --config ./webpack-front.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-react": "^7.9.4",
+    "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "css-loader": "^3.5.3",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "run-script": "^0.1.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
@@ -30,5 +34,8 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }
