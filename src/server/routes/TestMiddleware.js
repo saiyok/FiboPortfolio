@@ -1,11 +1,11 @@
 const getTime = (req, res, next) => {
     T = new Date();
     req.Time = T.toDateString();
-    console.log('From ' + T.now() + ' to ' + req.Time);
+    console.log('From ' + T + ' to ' + req.Time);
     next();
 };
 
-const cookieValidator = (req, res, next) => {
+const cookieValidator = async (req, res, next) => {
     try {
         await externallyValidateCookie(req.cookies.testCookie);
     }catch{

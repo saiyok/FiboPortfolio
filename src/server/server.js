@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 // app.use(express.static(__dirname + 'public'));
 app.listen(PORT);
-
+const db = require('../server/db/Connection');
 const cors = require('cors');
 const whitelist = ['http://localhost:3000', 'http://localhost:3306'];
 const corsOptions = {
@@ -17,13 +17,13 @@ const corsOptions = {
     }
   }
 }
-
+console.log("111111");
 const {getTime, cookieValidator} = require('./routes/TestMiddleware');
 app.get('/', (req, res) => {
     res.send({working: true})
 })
 
-app.get('/A', [cors(corsOptions), getTime], (req, res) => {
+app.get('/A', [cors(corsOptions),getTime], (req, res) => {
     // console.log(req);
     res.json([
         {
@@ -50,9 +50,26 @@ app.get('/A', [cors(corsOptions), getTime], (req, res) => {
 });
 
 app.get('/hi_db', (req, res) => {
-    let sql = `SELECT * FROM oceanport.user_info`;
+    let sql = `SELECT * FROM non.users`;
     db.query(sql, (err, result) => {
         if (err) {throw err}
         res.json(result);
     });
 });
+
+// connection.connect(function(err) {
+//     if (err) {
+//       console.error('error connecting: ' + err.stack);
+//       return;
+//     }
+   
+//     console.log('connected as id ' + connection.threadId);
+//   });
+
+//   connection.query('SELECT * FROM non.users', function(err,rows,fields){
+//       if(!err){
+//           console.log('NON:', rows);
+//       }else{
+//           console.log('Error na krub')
+//       }
+//   })
